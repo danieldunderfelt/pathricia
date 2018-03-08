@@ -1,7 +1,4 @@
-const simpleRouter = require('./simpleRouter')
-
-const uiRouter = (index = '/', history = null) => {
-  const window = typeof window !== 'undefined' ? window : {}
+export default (index = '/', history = null) => {
   const listeners = []
   
   function go(toRoute, replace = false) {
@@ -30,11 +27,11 @@ const uiRouter = (index = '/', history = null) => {
   
   function listen(listener) {
     listeners.push(listener)
-  
+    
     return () => {
       const idx = listeners.findIndex(registeredListener => registeredListener === listener)
-    
-      if( idx > -1 ) {
+      
+      if(idx > -1) {
         listeners.splice(idx, 1)
       }
     }
@@ -71,9 +68,4 @@ const uiRouter = (index = '/', history = null) => {
     isActive,
     listen
   }
-}
-
-module.exports = {
-  UIRouter: uiRouter,
-  simpleRouter: simpleRouter
 }

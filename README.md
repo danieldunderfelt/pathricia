@@ -78,6 +78,6 @@ The UIRouter is a factory function that returns an object with six methods: `go`
 
 In fact, this router was designed to be used with only `location.hash`, so don't feel like you're missing out if you don't provide a history! The only real difference is that the `back` and `forward` methods will not work in hash-only mode. This might change in the future, but I need to keep track of the history manually, so I'll save it for a future release.
 
-Register a route change listener by calling the `listen` method with a function. The callback will be called with the new route each time the route changes. You can easily hook this up into your state manager, as shown above.
+Register a route change listener by calling the `listen` method with a function. The callback will be called with the new route each time the route changes. You can easily hook this up into your state manager, as shown above. If you call the fucntion tha is returned, you'll unregister your callback.
 
 The central methods you'll use the most is the `go` and the `get` methods. The `go(toRoute)` method sets the location to be what you passed as `toRoute`, and then call all listeners. The `get()` method just returns what the current route is. If there is no current route, `get()` will return what you passed the router factory as the `indexRoute` argument. Easy peasy.
