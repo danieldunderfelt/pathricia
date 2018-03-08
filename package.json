@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "build": "node_modules/babel-cli/bin/babel.js index.js --out-file lib/index.js",
-    "preversion": "npm run test && npm run build"
+    "preversion": "npm run build"
   },
   "repository": {
     "type": "git",
