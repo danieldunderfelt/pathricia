@@ -1,11 +1,11 @@
 {
   "name": "ui-router",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "A very simple router that listens to either hash change or history.",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "node_modules/babel-cli/bin/babel.js index.js --out lib/index.js",
+    "build": "node_modules/babel-cli/bin/babel.js index.js --out-file lib/index.js",
     "preversion": "npm run test && npm run build"
   },
   "repository": {
