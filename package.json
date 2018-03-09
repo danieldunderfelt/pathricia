@@ -1,5 +1,5 @@
 {
-  "name": "ui-router",
+  "name": "router",
   "version": "0.1.0",
   "description": "A very simple router that listens to either hash change or history.",
   "main": "index.js",

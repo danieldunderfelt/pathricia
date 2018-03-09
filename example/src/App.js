@@ -48,6 +48,8 @@ const SelectRouter = styled.div`
   border-bottom: 1px solid #efefef;
 `
 
+const INITIAL_ROUTE = '/tab'
+
 class TabBar extends Component {
   
   constructor() {
@@ -55,11 +57,11 @@ class TabBar extends Component {
   
     this.tabState = observable({
       tabs: [
-        { label: 'Tab one', name: 'tab1' },
-        { label: 'Tab two', name: 'tab2' },
-        { label: 'Tab three', name: 'tab3' },
+        { label: 'Tab one', path: '/tab' },
+        { label: 'Tab two', path: '/tab/tab-two' },
+        { label: 'Tab three', path: '/tab/tab-two/tab-three' },
       ],
-      selectedTab: 'tab1',
+      selectedTab: INITIAL_ROUTE,
       selectedRouter: 'hash'
     })
   
@@ -81,15 +83,19 @@ class TabBar extends Component {
       }
       
       this.router = router === 'hash' ?
-        UIRouter('tab1') :
-        UIRouter('tab1', createHistory())
+        UIRouter(INITIAL_ROUTE) :
+        UIRouter(INITIAL_ROUTE, createHistory())
       
-      routerListener = this.router.listen(setTab)
+      routerListener = this.router.listen(setTab) // Add the listener
+      setTab(this.router.get()) // Update the current location from the new router
     }, true)
   }
   
   render() {
     const { tabs, selectedTab, selectedRouter } = this.tabState
+    const currentTab = tabs.find(t => t.path === selectedTab)
+    
+    console.log(selectedTab)
     
     return (
       <TabWrapper>
@@ -123,15 +129,15 @@ class TabBar extends Component {
         <div>
           { tabs.map(tab => (
             <Tab
-              selected={ selectedTab === tab.name }
-              onClick={ () => this.router.go(tab.name) }
-              key={ `tab_item_${ tab.name }` }>
+              selected={ selectedTab === tab.path }
+              onClick={ () => this.router.go(tab.path) }
+              key={ `tab_item_${ tab.path }` }>
               { tab.label }
             </Tab>
           )) }
         </div>
         <TabContent>
-          You selected { tabs.find(t => t.name === selectedTab).label }
+          You selected { currentTab ? currentTab.label : '' }
         </TabContent>
       </TabWrapper>
     )
