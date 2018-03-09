@@ -10,6 +10,7 @@ const TabWrapper = styled.nav`
   flex-direction: column;
   max-width: 960px;
   margin: 0 auto;
+  font-family: "Helvetica", Arial, sans-serif;
 `
 
 const Tab = styled.button`
@@ -92,6 +93,15 @@ class TabBar extends Component {
     
     return (
       <TabWrapper>
+        <h2>
+          ui-router
+        </h2>
+        <p>
+          This is an example of how to use the UI Router in React. Peek into the <code>example/src/App.js</code> file to see how it's wired up!
+        </p>
+        <p>
+          To demonstrate how to use the hash-based setup and the history based setup, you can switch between the two with these controls. Obviously you'd use either one in a real app, not both.
+        </p>
         <SelectRouter>
           <label>
             <input
@@ -100,7 +110,7 @@ class TabBar extends Component {
               name="router"
               checked={ selectedRouter === 'hash' }
               type="radio" /> Use hash router
-          </label>
+          </label><br />
           <label>
             <input
               onChange={ () => this.setRouter('history') }
