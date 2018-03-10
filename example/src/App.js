@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { observable, action, reaction } from 'mobx'
 import styled from 'styled-components'
-import Pathricia from './Router'
+import { Router, SimpleRouter } from 'pathricia/lib'
 import createHistory from 'history/createBrowserHistory'
 
 const TabWrapper = styled.nav`
@@ -74,17 +74,24 @@ class TabBar extends Component {
     })
   
     let routerListener = null
-    this.router = null
+    this.router = SimpleRouter(INITIAL_ROUTE)
     
     // Switch the routers
     reaction(() => this.tabState.selectedRouter, router => {
-      if(routerListener !== null) {
+      if(typeof routerListener === 'function') {
         routerListener() // Remove the listener
       }
       
-      this.router = router === 'hash' ?
-        Pathricia(INITIAL_ROUTE) :
-        Pathricia(INITIAL_ROUTE, createHistory())
+      switch(router) {
+        case 'hash':
+          this.router = Router(INITIAL_ROUTE)
+          break
+        case 'history':
+          this.router = Router(INITIAL_ROUTE, createHistory())
+          break
+        case 'simple':
+          this.router = SimpleRouter(INITIAL_ROUTE)
+      }
       
       routerListener = this.router.listen(setTab) // Add the listener
       setTab(this.router.get()) // Update the current location from the new router
@@ -122,6 +129,14 @@ class TabBar extends Component {
               name="router"
               checked={ selectedRouter === 'history' }
               type="radio" /> Use history router
+          </label><br />
+          <label>
+            <input
+              onChange={ () => this.setRouter('simple') }
+              value="simple"
+              name="router"
+              checked={ selectedRouter === 'simple' }
+              type="radio" /> Use simple router (hash-only)
           </label>
         </SelectRouter>
         <div>

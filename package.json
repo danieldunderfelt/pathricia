@@ -2,7 +2,7 @@
   "name": "pathricia",
   "version": "1.0.0",
   "description": "A very simple router that uses either location.hash or history.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "jest",
     "build": "node_modules/babel-cli/bin/babel.js src --out-dir lib",
