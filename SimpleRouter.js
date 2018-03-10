@@ -1,4 +1,4 @@
-module.exports = (index) => {
+module.exports = index => {
   
   const listeners = []
   let isListening = false

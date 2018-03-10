@@ -1,7 +1,7 @@
 {
   "name": "pathricia",
   "version": "1.0.0",
-  "description": "A very simple router that listens to either hash change or history.",
+  "description": "A very simple router that uses either location.hash or history.",
   "main": "index.js",
   "scripts": {
     "test": "jest",

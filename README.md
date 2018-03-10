@@ -141,3 +141,15 @@ Note that the router won't do anything unless you call a method, so just calling
 Since the Pathricia router uses `window.location.hash`, you obviously need access to the window object to use it in hash-only mode. If you need to use this in node, just pass a MemoryHistory (or something) from the `history` package as the second argument for the factory function. Then Pathricia will not try to access the `window` at any point.
 
 File an issue if the fact that Pathricia reads from the `window` object in becomes an issue at some point.
+
+## Bonus router
+
+Because what would a package be without a BONUS?
+
+The precursor to the Pathricia router is an even simpler hash-only router. I included it too because I really like it. it has no possibility to use a `history` instance, and no possibility to de-register listeners.
+
+Just the essence of routing.
+
+Use it by importing it from Pathricia:
+
+`import { SimpleRouter } from 'pathricia'`

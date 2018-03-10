@@ -1,5 +1,3 @@
-// I HATE TO HAVE TO COPY THIS HERE
-
 module.exports = (index = '/', history = null) => {
   const listeners = []
   let isListening = false
