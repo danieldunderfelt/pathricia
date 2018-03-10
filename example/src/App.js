@@ -95,8 +95,6 @@ class TabBar extends Component {
     const { tabs, selectedTab, selectedRouter } = this.tabState
     const currentTab = tabs.find(t => t.path === selectedTab)
     
-    console.log(selectedTab)
-    
     return (
       <TabWrapper>
         <h2>

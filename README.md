@@ -2,9 +2,9 @@
 
 This is a very simple implementation of a router, that is nevertheless fully functional. I have personally used it in various client projects and it has been a pleasure!
 
-## Variants
-
 This package exports the UI Router, which can be used with the history API or without. If you don't give it an instance of a history, it will just use the `location.hash` and work splendidly.
+
+Essentially, it's an abstraction for the current location, be it hash-based or history-based.
 
 ## Hash example
 
@@ -78,8 +78,36 @@ The UIRouter is a factory function that returns an object with six methods: `go`
 
 In fact, this router was designed to be used with only `location.hash`, so don't feel like you're missing out if you don't provide a history! The only real difference is that the `back` and `forward` methods will not work in hash-only mode. This might change in the future, but I need to keep track of the history manually, so I'll save it for a future release.
 
-Register a route change listener by calling the `listen` method with a function. The callback will be called with the new route each time the route changes. You can easily hook this up into your state manager, as shown above. If you call the fucntion tha is returned, you'll unregister your callback.
+Register a route change listener by calling the `listen` method with a function. The callback will be called with the new route each time the route changes. You can easily hook this up into your state manager, as shown above. If you call the function thar is returned, you'll deregister your listener callback.
 
 The central methods you'll use the most is the `go` and the `get` methods. The `go(toRoute)` method sets the location to be what you passed as `toRoute`, and then call all listeners. If you are using history, you can also pass a second `replace` parameter to `go()`, in which case the route will replace the current route.
 
 The `get()` method just returns what the current route is. If there is no current route, `get()` will return what you passed the router factory as the `indexRoute` argument. Easy peasy.
+
+## Examples and usage ideas
+
+### React app example
+
+Check the example folder for a quick React-based example with tabs.
+
+### Use in conditionals
+
+If all you want is to check what the current route is, you can do this:
+
+```js
+/* will return false if you are NOT where you are checking. */
+const router = Router(false)
+
+if(router.get() === 'route') {
+  console.log(`at route example.com/#route`)
+}
+
+// Or alternatively
+
+if(router.isActive('route')) {
+  console.log(`at route example.com/#route`)
+}
+
+```
+
+Note that the router won't do anything unless you call a method, so just calling the factory will not cause any overhead more than a simple function call. The route change listener is dynamically enabled and disabled when you add or remove listeners. If you have a need for many different "index routes", you can just conjure up as many routers as you want.

@@ -3,6 +3,8 @@ const simpleRouter = require('./simpleRouter')
 const uiRouter = (index = '/', history = null) => {
   const window = typeof window !== 'undefined' ? window : {}
   const listeners = []
+  let isListening = false
+  let historyUnlisten = null
   
   function go(toRoute, replace = false) {
     if( history && replace ) {
@@ -28,18 +30,6 @@ const uiRouter = (index = '/', history = null) => {
     return get() === route
   }
   
-  function listen(listener) {
-    listeners.push(listener)
-  
-    return () => {
-      const idx = listeners.findIndex(registeredListener => registeredListener === listener)
-    
-      if( idx > -1 ) {
-        listeners.splice(idx, 1)
-      }
-    }
-  }
-  
   function back() {
     if( history ) {
       history.goBack()
@@ -52,15 +42,59 @@ const uiRouter = (index = '/', history = null) => {
     }
   }
   
+  function listen(listener) {
+    listeners.push(listener)
+  
+    if(listeners.length > 0) {
+      _startListening()
+    }
+    
+    return _unlisten(listener)
+  }
+  
+  function _unlisten(listener) {
+    
+    return () => {
+      const idx = listeners.findIndex(registeredListener => registeredListener === listener)
+      
+      if( idx > -1 ) {
+        listeners.splice(idx, 1)
+      }
+      
+      if( listeners.length === 0 ) {
+        _stopListening()
+      }
+    }
+  }
+  
   function notifyListeners() {
     const current = get()
     listeners.forEach(listener => listener(current))
   }
   
-  if( history ) {
-    history.listen(notifyListeners)
-  } else {
-    window.onhashchange = notifyListeners
+  function _startListening() {
+    if(isListening) return
+    
+    if( history ) {
+      historyUnlisten = history.listen(notifyListeners)
+    } else {
+      window.addEventListener('hashchange', notifyListeners)
+    }
+    
+    isListening = true
+  }
+  
+  function _stopListening() {
+    if( !isListening ) return
+    
+    if( history && typeof historyUnlisten === 'function' ) {
+      historyUnlisten()
+      historyUnlisten = null
+    } else {
+      window.removeEventListener('hashchange', notifyListeners)
+    }
+    
+    isListening = false
   }
   
   return {
