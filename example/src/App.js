@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { observable, action, reaction } from 'mobx'
 import styled from 'styled-components'
-import UIRouter from './UIRouter'
+import UIRouter from './Router'
 import createHistory from 'history/createBrowserHistory'
 
 const TabWrapper = styled.nav`

@@ -1,11 +1,10 @@
-const listeners = []
-
 module.exports = (index) => {
+  
+  const listeners = []
+  let isListening = false
   
   function go(toRoute) {
     window.location.hash = toRoute
-    notifyListeners()
-    
     return get()
   }
   
@@ -20,6 +19,11 @@ module.exports = (index) => {
   
   function listen(listener) {
     listeners.push(listener)
+    
+    if(listeners.length > 0 && !isListening) {
+      window.addEventListener('hashchange', notifyListeners)
+      isListening = true
+    }
   }
   
   function notifyListeners() {
