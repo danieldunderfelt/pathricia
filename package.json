@@ -1,6 +1,6 @@
 {
-  "name": "router",
-  "version": "0.1.0",
+  "name": "pathricia",
+  "version": "1.0.0",
   "description": "A very simple router that listens to either hash change or history.",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/danieldunderfelt/simple-router.git"
+    "url": "git+ssh://git@github.com/danieldunderfelt/pathricia.git"
   },
   "keywords": [
     "simple",
@@ -22,9 +22,9 @@
   "author": "Daniel Dunderfelt <daniel@developsuperpowers.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/danieldunderfelt/simple-router/issues"
+    "url": "https://github.com/danieldunderfelt/pathricia/issues"
   },
-  "homepage": "https://github.com/danieldunderfelt/simple-router#readme",
+  "homepage": "https://github.com/danieldunderfelt/pathricia#readme",
   "optionalDependencies": {
     "history": "^4.7.2"
   },

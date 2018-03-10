@@ -1,7 +1,7 @@
 const SimpleRouter = require('./SimpleRouter')
-const UIRouter = require('./UIRouter')
+const Router = require('./Router')
 
 module.exports = {
-  UIRouter: UIRouter,
-  SimpleRouter: SimpleRouter
+  Router,
+  SimpleRouter
 }

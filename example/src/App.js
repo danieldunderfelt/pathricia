@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { observable, action, reaction } from 'mobx'
 import styled from 'styled-components'
-import UIRouter from './Router'
+import Pathricia from './Router'
 import createHistory from 'history/createBrowserHistory'
 
 const TabWrapper = styled.nav`
@@ -83,8 +83,8 @@ class TabBar extends Component {
       }
       
       this.router = router === 'hash' ?
-        UIRouter(INITIAL_ROUTE) :
-        UIRouter(INITIAL_ROUTE, createHistory())
+        Pathricia(INITIAL_ROUTE) :
+        Pathricia(INITIAL_ROUTE, createHistory())
       
       routerListener = this.router.listen(setTab) // Add the listener
       setTab(this.router.get()) // Update the current location from the new router
@@ -98,10 +98,10 @@ class TabBar extends Component {
     return (
       <TabWrapper>
         <h2>
-          ui-router
+          Pathricia
         </h2>
         <p>
-          This is an example of how to use the UI Router in React. Peek into the <code>example/src/App.js</code> file to see how it's wired up!
+          This is an example of how to use the Pathricia Router in React. Peek into the <code>example/src/App.js</code> file to see how it's wired up!
         </p>
         <p>
           To demonstrate how to use the hash-based setup and the history based setup, you can switch between the two with these controls. Obviously you'd use either one in a real app, not both.
