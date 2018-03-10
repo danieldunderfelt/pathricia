@@ -1,6 +1,6 @@
 {
   "name": "pathricia",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A very simple router that uses either location.hash or history.",
   "main": "index.js",
   "scripts": {
