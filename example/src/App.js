@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { observable, action, reaction } from 'mobx'
 import styled from 'styled-components'
-import { Router, SimpleRouter } from 'pathricia/lib'
+import { Router, SimpleRouter } from 'pathricia'
 import createHistory from 'history/createBrowserHistory'
 
 const TabWrapper = styled.nav`
