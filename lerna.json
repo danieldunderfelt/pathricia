@@ -1,0 +1,9 @@
+{
+  "packages": ["packages/*"],
+  "command": {
+    "bootstrap": {
+      "ignore": ["example"]
+    }
+  },
+  "version": "1.0.1"
+}

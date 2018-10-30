@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { observer } from 'mobx-react'
 import { observable, action, reaction } from 'mobx'
 import styled from 'styled-components'
-import { Router, SimpleRouter } from 'pathricia'
+import { Router, SimpleRouter } from '../../packages/pathricia/src'
 import createHistory from 'history/createBrowserHistory'
 import { TabWrapper, TabContent, Tab } from './style'
 

@@ -1,0 +1,17 @@
+{
+  "name": "pathricia",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "babel src --out-dir lib",
+    "preversion": "npm run build"
+  },
+  "optionalDependencies": {
+    "history": "^4.7.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-core": "^6.17.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}

@@ -1,16 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { Router } from 'pathricia'
-import createHistory from 'history/createBrowserHistory'
+import React from 'react'
+import { useRouter } from '../../packages/react-pathricia/src'
 import { TabWrapper, Tab, TabContent } from './style'
-
-function useRouter(index = '/') {
-  const router = Router(index, createHistory())
-  const [currentRoute, setRoute] = useState(index)
-
-  useEffect(() => router.listen(setRoute))
-
-  return [currentRoute, router.go, router.back, router.forward]
-}
 
 const tabs = [
   { label: 'Tab one', path: '/tab' },
@@ -19,7 +9,7 @@ const tabs = [
 ]
 
 export default () => {
-  const [currentTab, go] = useRouter('/')
+  const [currentTab, go] = useRouter('/tab')
 
   return (
     <TabWrapper>
@@ -33,7 +23,11 @@ export default () => {
           </Tab>
         ))}
       </div>
-      {currentTab && <TabContent>You selected {currentTab.label}</TabContent>}
+      {currentTab && (
+        <TabContent>
+          You selected {tabs.find(t => t.path === currentTab).label}
+        </TabContent>
+      )}
     </TabWrapper>
   )
 }

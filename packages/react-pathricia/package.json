@@ -1,0 +1,42 @@
+{
+  "name": "react-pathricia",
+  "version": "1.0.1",
+  "description": "React bindings for the Pathricia router.",
+  "keywords": [
+    "react",
+    "router",
+    "routing",
+    "path",
+    "hooks"
+  ],
+  "author": "Daniel Dunderfelt <daniel@developsuperpowers.com>",
+  "homepage": "https://github.com/danieldunderfelt/pathricia/tree/master/packages/react-pathricia#readme",
+  "license": "MIT",
+  "main": "src/index.js",
+  "directories": {
+    "src": "src"
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danieldunderfelt/pathricia.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/danieldunderfelt/pathricia/issues"
+  },
+  "peerDependencies": {
+    "history": "^4.7.2",
+    "pathricia": "^1.0.1",
+    "react": "^16.7.0-alpha.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "react": "^16.7.0-alpha.0",
+    "history": "^4.7.2"
+  }
+}

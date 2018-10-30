@@ -1,31 +1,28 @@
 {
   "name": "example",
-  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "history": "^4.7.2",
     "lodash": "^4.17.11",
     "mobx": "^5.5.2",
     "mobx-react": "^5.3.6",
-    "pathricia": "../",
+    "pathricia": "^1.0.1",
     "react": "16.7.0-alpha.0",
     "react-dom": "16.7.0-alpha.0",
-    "react-scripts": "^2.1.0",
     "styled-components": "^4.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "prettier": "^1.14.3"
+    "dev": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "parcel-bundler": "^1.10.3"
+  }
 }

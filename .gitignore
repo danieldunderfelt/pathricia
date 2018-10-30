@@ -1,4 +1,5 @@
-lib
 node_modules
 .idea
 npm-debug.log
+.cache
+example/dist
